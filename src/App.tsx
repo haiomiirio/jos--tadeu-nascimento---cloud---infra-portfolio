@@ -12,6 +12,7 @@ import AuthPage from './pages/AuthPage';
 import RestrictedArea from './pages/RestrictedArea';
 import FinancePage from './pages/FinancePage';
 import EvolutionPage from './pages/EvolutionPage';
+import AboutPortfolio from './pages/AboutPortfolio';
 import AdminPanel from './components/Admin/AdminPanel';
 import AdminLogin from './components/Auth/AdminLogin';
 import AiChat from './AiChat';
@@ -124,6 +125,7 @@ const App: React.FC = () => {
       case 'home': return <Home />;
       case 'about': return <About />;
       case 'resume': return <Resume />;
+      case 'portfolio': return <AboutPortfolio />;
       case 'evolution': return <EvolutionPage stories={evolutionStories} onAddStory={handleAddEvolutionStory} onDeleteStory={handleDeleteEvolutionStory} />;
       case 'process': return <Process tasks={tasks} currentUserId={currentUser?.id} contributions={kanbanContributions} onAddContribution={handleAddKanbanContribution} onDeleteContribution={handleDeleteKanbanContribution} />;
       case 'auth': return <AuthPage onAuthSuccess={handleAuthSuccess} />;

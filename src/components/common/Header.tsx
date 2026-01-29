@@ -27,6 +27,7 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
               { id: 'home', label: 'INÍCIO' },
               { id: 'about', label: 'SOBRE' },
               { id: 'resume', label: 'CURRÍCULO' },
+              { id: 'portfolio', label: '💻 PORTFÓLIO' },
               { id: 'evolution', label: '🚀 EVOLUÇÃO' },
               { id: 'process', label: 'PROCESSO' },
             ].map(item => (

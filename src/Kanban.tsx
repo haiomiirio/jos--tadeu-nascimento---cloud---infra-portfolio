@@ -112,6 +112,14 @@ const Kanban: React.FC<KanbanProps> = ({ isAdmin = false }) => {
 
   return (
     <div className="w-full">
+      {/* Aviso de Desenvolvimento */}
+      <div className="mb-8 bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
+        <p className="text-xs font-black uppercase tracking-widest text-black mb-2">⚠️ EM DESENVOLVIMENTO</p>
+        <p className="text-sm font-bold text-black">
+          Esta funcionalidade ainda está sendo desenvolvida. Em breve você poderá acompanhar meus projetos e metas de estudo em tempo real!
+        </p>
+      </div>
+
       {isAdmin && (
         <form onSubmit={addTask} className="mb-8 flex gap-2">
           <input 
