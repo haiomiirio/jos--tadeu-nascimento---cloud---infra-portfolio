@@ -72,13 +72,6 @@ export const EXPERIENCES: Experience[] = [
     role: "Gerente de Operações",
     period: "2018 - 2023",
     description: "🎯 DESAFIO: Liderar equipes multidisciplinares e otimizar processos operacionais em ambiente de alta pressão.\n\n⚙️ COMPETÊNCIAS: Gestão de equipes, melhoria de processos, comunicação com stakeholders, resolução de conflitos.\n\n✅ RESULTADOS: Essa experiência desenvolveu minha capacidade de pensar estrategicamente sobre infraestrutura — não apenas como um problema técnico, mas como um habilitador de negócios. Aprendi a traduzir necessidades técnicas em valor para o negócio."
-  },
-  {
-    id: "e3",
-    company: "Infraestrutura & Redes",
-    role: "Analista de Suporte de TI",
-    period: "2016 - 2018",
-    description: "🎯 DESAFIO: Manter alta disponibilidade de servidores e garantir recuperação rápida em cenários de falha.\n\n⚙️ TECNOLOGIAS: Linux, VMware, redes TCP/IP, monitoramento de ativos.\n\n✅ RESULTADOS: Implementei processo de backup automatizado reduzindo RTO (Recovery Time Objective) de 4h para 30min. Essa experiência hands-on com servidores on-premise foi fundamental para entender os desafios que Cloud resolve."
   }
 ];
 
