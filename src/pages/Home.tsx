@@ -36,7 +36,7 @@ const Home: React.FC = () => {
             <p className="text-xs font-bold uppercase">Certificações</p>
           </div>
           <div className="bg-brutal-pink border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">
-            <p className="text-4xl font-black mb-2">3x</p>
+            <p className="text-4xl font-black mb-2">4x</p>
             <p className="text-xs font-bold uppercase">AWS Certified</p>
           </div>
           <div className="bg-brutal-blueLight border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">

@@ -2,8 +2,26 @@ import React from 'react';
 import { EXPERIENCES } from '../constants';
 
 const Resume: React.FC = () => {
+  const handleDownloadCV = () => {
+    // Opção 1: Abrir LinkedIn em nova aba para o recrutador ver/baixar CV completo
+    window.open('https://www.linkedin.com/in/josetadeu/', '_blank');
+  };
+
   return (
     <section className="w-full py-8">
+      {/* Botão de Download - Destaque no topo */}
+      <div className="mb-8 text-center">
+        <button
+          onClick={handleDownloadCV}
+          className="brutal-btn bg-brutal-red text-white border-4 border-black px-8 py-4 text-lg font-black uppercase hover:scale-105 transition-transform shadow-brutalLarge"
+        >
+          📥 Baixar Currículo Completo
+        </button>
+        <p className="text-xs mt-2 font-bold text-gray-600">
+          (Abre meu perfil do LinkedIn com CV completo)
+        </p>
+      </div>
+
       <div className="mb-16 sm:mb-24">
         <div className="inline-block bg-brutal-blue border-4 border-black px-4 sm:px-6 py-2 mb-8 sm:mb-12 shadow-brutal">
           <h2 className="text-2xl sm:text-4xl font-black uppercase">EXPERIÊNCIA</h2>
