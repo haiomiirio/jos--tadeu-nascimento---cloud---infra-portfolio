@@ -29,20 +29,81 @@ const Home: React.FC = () => {
           {PERSONAL_DATA.bio}
         </p>
 
-        <div className="w-full max-w-3xl mx-auto mb-12 border-4 border-black bg-brutal-yellow p-8 shadow-brutal">
-          <p className="text-xs font-black uppercase tracking-widest text-black mb-2">🔐 ACESSO RESTRITO</p>
-          <p className="text-sm font-bold text-black">
-            Bem-vindo! Esta é uma área em desenvolvimento com acesso exclusivo para administração por enquanto.
-          </p>
+        {/* Stats Section - O que recrutadores querem ver */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
+          <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">
+            <p className="text-4xl font-black mb-2">12+</p>
+            <p className="text-xs font-bold uppercase">Certificações</p>
+          </div>
+          <div className="bg-brutal-pink border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">
+            <p className="text-4xl font-black mb-2">3x</p>
+            <p className="text-xs font-bold uppercase">AWS Certified</p>
+          </div>
+          <div className="bg-brutal-blueLight border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">
+            <p className="text-4xl font-black mb-2">UOL</p>
+            <p className="text-xs font-bold uppercase">Experiência</p>
+          </div>
+          <div className="bg-brutal-purple border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform text-white">
+            <p className="text-4xl font-black mb-2">100%</p>
+            <p className="text-xs font-bold uppercase">Disponível</p>
+          </div>
         </div>
-        
-        <div className="flex flex-wrap gap-6 justify-center">
-          <button className="brutal-btn bg-brutal-yellow px-8 sm:px-10 py-3 sm:py-4 text-sm flex items-center gap-2 hover:shadow-lg transition-shadow">
-            CURRÍCULO <span className="text-xl">★</span>
-          </button>
-          <button className="brutal-btn bg-white px-8 sm:px-10 py-3 sm:py-4 text-sm hover:shadow-lg transition-shadow">
-            CONTATO
-          </button>
+
+        {/* Highlights - Principais competências */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-white border-4 border-black p-8 shadow-brutalLarge">
+            <h3 className="text-2xl font-black mb-6 uppercase">Por que me contratar?</h3>
+            <div className="grid md:grid-cols-3 gap-6 text-left">
+              <div>
+                <p className="font-black text-lg mb-2">🏆 Certificado AWS</p>
+                <p className="text-sm">Solutions Architect, Developer e AI Practitioner. Não só estudei — passei nos exames.</p>
+              </div>
+              <div>
+                <p className="font-black text-lg mb-2">💼 Maturidade</p>
+                <p className="text-sm">Ex-gerente com experiência em liderança, processos e comunicação com stakeholders.</p>
+              </div>
+              <div>
+                <p className="font-black text-lg mb-2">🔥 Mão na Massa</p>
+                <p className="text-sm">UOL: React, Docker, CI/CD. Não apenas teoria — código real em produção.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stack Rápido */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <h3 className="text-xl font-black mb-4 uppercase">Stack Técnico</h3>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {['AWS', 'Azure', 'GCP', 'Docker', 'React', 'TypeScript', 'CI/CD', 'Fortinet', 'Linux', 'Python'].map((tech) => (
+              <span key={tech} className="bg-black text-white border-2 border-black px-4 py-2 font-bold text-sm hover:bg-brutal-red transition-colors">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="max-w-3xl mx-auto mb-12 border-4 border-black bg-brutal-red p-8 shadow-brutal">
+          <p className="text-2xl font-black uppercase text-white mb-4">🚀 Pronto para começar!</p>
+          <p className="text-sm font-bold text-white mb-6">
+            Busco estágio/júnior em Cloud, Infraestrutura ou Suporte. Certificações provam conhecimento. Experiência no UOL prova que entrego. Maturidade profissional garante que agrego valor desde o dia 1.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a 
+              href={PERSONAL_DATA.socials.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="brutal-btn bg-brutal-yellow px-8 py-3 text-sm font-black hover:scale-105 transition-transform"
+            >
+              VER LINKEDIN →
+            </a>
+            <a 
+              href={`mailto:${PERSONAL_DATA.socials.email}`}
+              className="brutal-btn bg-white px-8 py-3 text-sm font-black hover:scale-105 transition-transform"
+            >
+              ENVIAR E-MAIL
+            </a>
+          </div>
         </div>
       </div>
     </section>
