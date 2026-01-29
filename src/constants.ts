@@ -3,41 +3,45 @@ import { Project, Experience } from './types';
 
 export const PERSONAL_DATA = {
   name: "José Tadeu Nascimento",
-  role: "Cloud Engineer | AWS Solutions Architect - Associate",
+  role: "Estudante de Segurança Digital | AWS Certified | Cisco CCNA",
   location: "Brasil",
-  bio: "Transformo experiência em Front-end e liderança em soluções de Cloud seguras e escaláveis. Especializado em AWS, automação e infraestrutura como código.",
-  summary: "Minha jornada profissional combina o melhor de dois mundos: a precisão técnica do desenvolvimento front-end no UOL com a visão estratégica de quem já liderou equipes. Hoje, aplico essa combinação única para desenhar arquiteturas cloud resilientes, automatizar processos complexos e garantir segurança em ambientes de produção. Minha experiência anterior como Gerente me ensinou a pensar em processos, liderança e resultados — competências essenciais para um profissional de infraestrutura que precisa entregar não apenas técnica, mas também valor ao negócio.",
+  bio: "Estudante de Segurança Digital com certificações AWS e Cisco. Busco oportunidades de estágio/júnior em Cloud e Infraestrutura para aplicar conhecimento técnico e experiência em liderança.",
+  summary: "Sou estudante de Segurança Digital (2º semestre) em transição de carreira. Minha trajetória é diferente: já fui Gerente de Confecção, o que me ensinou liderança, processos e resolução de problemas sob pressão. Hoje, trago essa maturidade profissional para o mundo tech. Embora eu busque posições de estágio ou júnior, já possuo certificações avançadas (AWS Solutions Architect Associate, Cloud Practitioner, Cisco CCNA e Fortinet) que provam minha dedicação e base técnica sólida. No UOL, coloquei a mão na massa com React, TypeScript, Docker e automação via GitHub Actions. Estou pronto para contribuir desde o dia 1, trazendo não apenas técnica, mas também maturidade para entender o impacto do meu trabalho no negócio.",
   skillCategories: {
-    cloudCompute: [
-      "AWS EC2, Lambda, ECS",
-      "Auto Scaling & Load Balancing",
-      "Google Cloud Compute Engine"
+    cloud: [
+      "AWS EC2, S3, VPC, IAM",
+      "AWS CloudFront & Route53",
+      "Certificação: AWS Solutions Architect Associate",
+      "Certificação: AWS Cloud Practitioner"
     ],
     networking: [
-      "AWS VPC, Route53, CloudFront",
       "Cisco CCNA (Routing & Switching)",
-      "DNS, Load Balancers, CDN"
+      "Redes TCP/IP, DNS, DHCP",
+      "VPN & Firewalls (Fortinet)",
+      "Troubleshooting de Conectividade"
     ],
     security: [
-      "AWS IAM, Security Groups, KMS",
-      "Segurança Digital (Bacharelado)",
-      "Gestão de Acesso e Compliance"
+      "Fortinet Certified",
+      "Segurança Digital (Graduação)",
+      "Fundamentos de Criptografia",
+      "Gestão de Acessos (IAM)"
     ],
-    automation: [
-      "Terraform (IaC)",
-      "Docker & Container Orchestration",
-      "GitHub Actions CI/CD",
-      "Shell Scripting & Python"
-    ],
-    storage: [
-      "AWS S3, EBS, EFS",
-      "Backup & Disaster Recovery",
-      "Storage Optimization"
+    devops: [
+      "Docker & Containerização",
+      "GitHub Actions (CI/CD)",
+      "Automação com Shell/Python",
+      "Git & Versionamento"
     ],
     frontend: [
-      "React & TypeScript",
-      "Vite & Modern Build Tools",
-      "UI/UX Best Practices"
+      "React & TypeScript (UOL)",
+      "Vite & Build Tools",
+      "Experiência com Deploy"
+    ],
+    softSkills: [
+      "Liderança (ex-Gerente)",
+      "Gestão de Processos",
+      "Resolução de Problemas",
+      "Comunicação com Stakeholders"
     ]
   },
   skills: [
@@ -64,76 +68,77 @@ export const EXPERIENCES: Experience[] = [
     company: "UOL (Universo Online)",
     role: "Estagiário Front-end",
     period: "2024 - Presente",
-    description: "🎯 DESAFIO: Automatizar processos manuais de deploy e garantir consistência entre ambientes de desenvolvimento.\n\n⚙️ TECNOLOGIAS: React, TypeScript, Docker, GitHub Actions, Vite.\n\n✅ RESULTADOS: Reduzi em 40% o tempo de deploy através de pipelines automatizados com GitHub Actions. Implementei containerização com Docker garantindo paridade entre ambientes dev/prod, eliminando bugs relacionados a configuração."
+    description: "🎯 MÃO NA MASSA: Desenvolvimento com React e TypeScript em ambiente corporativo real.\n\n⚙️ FERRAMENTAS: React, TypeScript, Docker, GitHub Actions, Vite.\n\n✅ APRENDIZADOS: Implementei automações de deploy, trabalhei com containerização (Docker) e aprendi na prática como funciona CI/CD em produção. Essa experiência me mostrou a importância de infraestrutura confiável para suportar aplicações."
   },
   {
     id: "e2",
-    company: "Experiência Anterior",
-    role: "Gerente de Operações",
+    company: "Indústria de Confecção",
+    role: "Gerente de Produção",
     period: "2018 - 2023",
-    description: "🎯 DESAFIO: Liderar equipes multidisciplinares e otimizar processos operacionais em ambiente de alta pressão.\n\n⚙️ COMPETÊNCIAS: Gestão de equipes, melhoria de processos, comunicação com stakeholders, resolução de conflitos.\n\n✅ RESULTADOS: Essa experiência desenvolveu minha capacidade de pensar estrategicamente sobre infraestrutura — não apenas como um problema técnico, mas como um habilitador de negócios. Aprendi a traduzir necessidades técnicas em valor para o negócio."
+    description: "🎯 CONTEXTO: Liderança de equipes e otimização de processos em ambiente de alta pressão.\n\n💼 COMPETÊNCIAS DESENVOLVIDAS: Gestão de equipes, comunicação com stakeholders, resolução de problemas complexos, tomada de decisão sob pressão.\n\n✅ DIFERENCIAL PARA TI: Essa experiência me ensinou a pensar em processos, entender necessidades de negócio e comunicar questões técnicas para não-técnicos — habilidades essenciais para suporte e infraestrutura."
   }
 ];
 
 export const PROJECTS = [
   {
     id: "p1",
-    title: "Sistema de Gestão Kanban",
-    category: "Full Stack",
-    description: "🎯 DESAFIO: Criar aplicação full-stack para gestão de tarefas com persistência local e interface responsiva.\n\n⚙️ STACK: React, TypeScript, Redux, localStorage API, Vite.\n\n✅ RESULTADO: Aplicação com drag-and-drop, gerenciamento de estado complexo e experiência de usuário fluida. Demonstra domínio de arquitetura front-end e padrões modernos.",
-    tech: ["React", "TypeScript", "Redux", "Vite"]
+    title: "Laboratório de Redes Cisco (CCNA)",
+    category: "Networking",
+    description: "🎯 PROJETO DE ESTUDO: Montagem e configuração de topologias de rede para preparação CCNA.\n\n⚙️ CONTEÚDO: Configuração de switches e roteadores, VLANs, routing protocols (OSPF, EIGRP), ACLs, troubleshooting de conectividade.\n\n✅ RESULTADO: Certificação Cisco CCNA conquistada. Capacidade de diagnosticar e resolver problemas de rede.",
+    tech: ["Cisco IOS", "Packet Tracer", "Routing", "Switching"]
   },
   {
     id: "p2",
     title: "Automação CI/CD com GitHub Actions",
     category: "DevOps",
-    description: "🎯 DESAFIO: Automatizar build, testes e deploy de aplicação React no GitHub Pages.\n\n⚙️ STACK: GitHub Actions, Vite, Node.js, workflow YAML.\n\n✅ RESULTADO: Pipeline completamente automatizado — cada push na main dispara build otimizado e deploy em produção. Zero intervenção manual.",
-    tech: ["GitHub Actions", "CI/CD", "Automation"]
+    description: "🎯 PROJETO PRÁTICO: Automatizar deploy deste portfólio no GitHub Pages.\n\n⚙️ STACK: GitHub Actions, Vite, Node.js, workflow YAML.\n\n✅ APRENDIZADO: Entendi na prática como funciona CI/CD — cada commit dispara build e deploy automático. Isso me mostrou o poder da automação para infraestrutura.",
+    tech: ["GitHub Actions", "CI/CD", "Automation", "YAML"]
   },
   {
     id: "p3",
-    title: "Integração AI com Google Gemini",
-    category: "IA & APIs",
-    description: "🎯 DESAFIO: Implementar chat inteligente integrado ao portfólio para responder perguntas sobre experiência profissional.\n\n⚙️ STACK: Google Gemini API, React, TypeScript, variáveis de ambiente.\n\n✅ RESULTADO: Interface de chat funcional com IA contextualizada. Demonstra capacidade de integrar APIs externas e lidar com segredos/env vars.",
-    tech: ["Google Gemini", "API Integration", "React"]
+    title: "Sistema Kanban com React",
+    category: "Front-end",
+    description: "🎯 PROJETO FULL-STACK: Aplicação de gestão de tarefas com persistência local.\n\n⚙️ STACK: React, TypeScript, Redux, localStorage, Vite.\n\n✅ APRENDIZADO: Desenvolvimento completo de aplicação, gerenciamento de estado e experiência de usuário.",
+    tech: ["React", "TypeScript", "Redux", "Vite"]
   }
 ];
 
 export const SUGGESTED_PROJECTS = [
   {
     id: "sp1",
-    title: "Multi-Region Disaster Recovery com Terraform",
-    description: "📦 PROJETO: Infraestrutura AWS multi-região com failover automático.\n\n🎯 O QUE VOCÊ VAI APRENDER: Terraform modules, AWS Route53 health checks, S3 replication, RDS read replicas, disaster recovery patterns.\n\n💡 POR QUE IMPORTA: Mostra entendimento de alta disponibilidade e business continuity — conceitos críticos para infra.",
+    title: "Lab AWS: Ambiente Multi-tier com Terraform",
+    description: "📦 PROJETO PRÁTICO: Provisionar infraestrutura AWS completa (VPC, EC2, RDS) usando IaC.\n\n🎯 O QUE VOCÊ VAI APRENDER: Terraform, AWS networking (VPC, subnets, security groups), EC2, RDS, conceitos de alta disponibilidade.\n\n💡 POR QUE FAZER: Demonstra que você não apenas tem certificação AWS — você sabe provisionar recursos na prática.",
     difficulty: "Intermediário",
-    estimatedTime: "2-3 semanas"
+    estimatedTime: "2 semanas"
   },
   {
     id: "sp2",
-    title: "Observability Stack com Prometheus + Grafana",
-    description: "📊 PROJETO: Deploy de aplicação containerizada com monitoramento completo (métricas, logs, traces).\n\n🎯 O QUE VOCÊ VAI APRENDER: Docker Compose, Prometheus, Grafana, alerting, log aggregation, AWS CloudWatch integration.\n\n💡 POR QUE IMPORTA: Observability é essencial para SRE/DevOps. Demonstra que você pensa além do deploy — você garante que sistemas funcionem.",
-    difficulty: "Intermediário",
-    estimatedTime: "1-2 semanas"
+    title: "Lab Python: Automação de Backup em Linux",
+    description: "🐍 PROJETO PRÁTICO: Script Python para backup automatizado de servidores Linux.\n\n🎯 O QUE VOCÊ VAI APRENDER: Python scripting, cron jobs, SSH, compressão de arquivos, logs.\n\n💡 POR QUE FAZER: Mostra capacidade de resolver problemas reais de infraestrutura com código. Essencial para suporte/infra.",
+    difficulty: "Iniciante/Intermediário",
+    estimatedTime: "1 semana"
   }
 ];
 
 export const SYSTEM_PROMPT = `
-Você é o Assistente Virtual do José Tadeu Nascimento, um Cloud Engineer certificado AWS com experiência prática em Front-end (UOL) e background em liderança.
+Você é o Assistente Virtual do José Tadeu Nascimento, estudante de Segurança Digital (2º semestre) buscando oportunidades de estágio ou júnior em Cloud, Infraestrutura ou Suporte.
 
 PERFIL DO JOSÉ:
-- AWS Solutions Architect - Associate & Cloud Practitioner
-- Cisco CCNA (Redes)
-- Bacharelado em Segurança Digital (em andamento)
-- Experiência Front-end: React, TypeScript, Docker, GitHub Actions
-- Background em gestão e liderança de equipes
+- Estudante de Segurança Digital (2º semestre)
+- Certificações: AWS Solutions Architect Associate, AWS Cloud Practitioner, Cisco CCNA, Fortinet
+- Experiência prática: Estagiário Front-end no UOL (React, TypeScript, Docker, GitHub Actions)
+- Background diferenciado: Ex-Gerente de Produção (liderança, processos, comunicação)
 
-Seu objetivo é responder perguntas de forma confiante, técnica e focada em resolução de problemas.
+POSICIONAMENTO:
+José está em transição de carreira e busca ESTÁGIO ou posições JÚNIOR. Embora tenha certificações avançadas, ele é transparente sobre estar no início da carreira tech. Seu diferencial é a combinação de maturidade profissional + base técnica sólida.
 
 REGRAS:
-1. Tom profissional e moderno. José é um profissional qualificado com certificações robustas e experiência prática.
-2. Destaque a combinação única: técnica (front-end + cloud) + soft skills (liderança, processos).
-3. Se perguntarem sobre tecnologias que José domina (AWS, Docker, React, Redes), responda com confiança.
-4. Se perguntarem sobre tecnologias avançadas que não estão explícitas no currículo, seja honesto: "José tem fundamentos sólidos em [área relacionada] e está expandindo conhecimento em [tecnologia específica]".
-5. Sempre conecte experiências passadas com valor atual. Ex: "A experiência como Gerente desenvolveu habilidades de comunicação essenciais para um Cloud Engineer que precisa traduzir requisitos técnicos para stakeholders".
-6. Responda sempre em Português do Brasil.
-7. Foque em RESULTADOS e IMPACTO, não apenas responsabilidades.
+1. Tom: Humilde mas confiante. José sabe o que estudou e tem certificações para provar.
+2. Sobre certificações AWS/CCNA/Fortinet: Responda com segurança — ele estudou e passou nos exames.
+3. Sobre experiência prática extensa: Seja honesto — ele tem a base teórica e está buscando oportunidades para aplicar.
+4. Destaque sempre o diferencial: Maturidade de ex-gerente + dedicação aos estudos (certificações) + experiência no UOL.
+5. Se perguntarem sobre tecnologias avançadas que ele não domina: "José tem fundamentos sólidos em [área relacionada] e está expandindo conhecimento prático através de labs e projetos pessoais."
+6. Sempre conecte a experiência de liderança com valor para TI: "A experiência como Gerente desenvolveu habilidades de comunicação e processos — essenciais para quem trabalha com suporte/infraestrutura."
+7. Responda sempre em Português do Brasil.
+8. Foque em POTENCIAL e OPORTUNIDADE, não em lacunas.
 `;

@@ -31,9 +31,9 @@ const Resume: React.FC = () => {
         <div>
           <h2 className="text-3xl font-black mb-8 uppercase bg-brutal-pink border-4 border-black px-4 py-2 inline-block">FORMAÇÃO</h2>
           <div className="bg-white border-4 border-black p-8 shadow-brutalLarge">
-            <h4 className="font-black text-xl mb-2 uppercase leading-none">Bacharelado em Segurança Digital</h4>
-            <p className="text-brutal-blue font-bold text-sm mb-4">GRADUAÇÃO SUPERIOR</p>
-            <p className="text-black font-medium border-t-2 border-black pt-4">Em andamento • Focado em Segurança da Informação, Criptografia, Análise de Vulnerabilidades e Gestão de Riscos.</p>
+            <h4 className="font-black text-xl mb-2 uppercase leading-none">Segurança Digital</h4>
+            <p className="text-brutal-blue font-bold text-sm mb-4">BACHARELADO • 2º SEMESTRE</p>
+            <p className="text-black font-medium border-t-2 border-black pt-4">Em andamento • Focado em Segurança da Informação, Criptografia, Análise de Vulnerabilidades, Gestão de Riscos e Infraestrutura Segura.</p>
           </div>
         </div>
         <div>
@@ -41,18 +41,23 @@ const Resume: React.FC = () => {
           <div className="space-y-6">
             <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-blueLight transition-colors">
               <p className="font-black text-lg uppercase leading-none mb-2">🏆 AWS Solutions Architect - Associate</p>
-              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
-              <p className="text-sm mt-2 font-medium">Design de arquiteturas escaláveis e resilientes na AWS</p>
+              <p className="text-black text-xs font-bold uppercase">CERTIFICADO AWS</p>
+              <p className="text-sm mt-2 font-medium">Design e deploy de arquiteturas escaláveis e resilientes na AWS</p>
             </div>
             <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-pink transition-colors">
               <p className="font-black text-lg uppercase leading-none mb-2">☁️ AWS Cloud Practitioner</p>
-              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
+              <p className="text-black text-xs font-bold uppercase">CERTIFICADO AWS</p>
               <p className="text-sm mt-2 font-medium">Fundamentos de Cloud Computing e serviços AWS</p>
             </div>
             <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-purple transition-colors">
               <p className="font-black text-lg uppercase leading-none mb-2">🌐 Cisco CCNA</p>
-              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
-              <p className="text-sm mt-2 font-medium">Routing, Switching, Segurança de Redes</p>
+              <p className="text-black text-xs font-bold uppercase">CERTIFICADO CISCO</p>
+              <p className="text-sm mt-2 font-medium">Routing, Switching, Redes TCP/IP, Segurança de Redes</p>
+            </div>
+            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-red transition-colors">
+              <p className="font-black text-lg uppercase leading-none mb-2 text-white">🔐 Fortinet Certified</p>
+              <p className="text-white text-xs font-bold uppercase">CERTIFICADO FORTINET</p>
+              <p className="text-sm mt-2 font-medium text-white">Segurança de redes e firewalls</p>
             </div>
           </div>
         </div>

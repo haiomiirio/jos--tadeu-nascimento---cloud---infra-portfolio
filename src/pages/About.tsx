@@ -17,24 +17,37 @@ const About: React.FC = () => {
           </div>
           
           <div className="bg-brutal-purple border-4 border-black p-6 shadow-brutal -rotate-1">
-             <h3 className="text-xl font-black mb-2 uppercase">🎯 MISSÃO TÉCNICA</h3>
-             <p className="font-bold">Construir infraestruturas cloud resilientes, seguras e escaláveis que habilitam crescimento de negócios.</p>
+             <h3 className="text-xl font-black mb-2 uppercase text-white">🎯 OBJETIVO</h3>
+             <p className="font-bold text-white">Estágio ou posição júnior em Cloud, Infraestrutura ou Suporte onde eu possa aplicar minhas certificações e contribuir desde o dia 1.</p>
+          </div>
+
+          <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
+             <h3 className="text-xl font-black mb-4 uppercase">📞 VAMOS CONVERSAR?</h3>
+             <p className="font-bold mb-4">Se você busca alguém com base técnica sólida, maturidade profissional e vontade de aprender, vamos trocar uma ideia!</p>
+             <div className="flex flex-wrap gap-4">
+               <a href={PERSONAL_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="brutal-btn bg-brutal-blue text-white px-6 py-2 text-sm">
+                 LINKEDIN
+               </a>
+               <a href={`mailto:${PERSONAL_DATA.socials.email}`} className="brutal-btn bg-white px-6 py-2 text-sm">
+                 E-MAIL
+               </a>
+             </div>
           </div>
         </div>
       </div>
 
       {/* Skills por Categoria */}
       <div className="mb-12">
-        <h3 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">STACK TÉCNICO</h3>
+        <h3 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">MÃO NA MASSA</h3>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Cloud Compute */}
+          {/* Cloud */}
           <div className="bg-brutal-blueLight border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
-              ☁️ Cloud Compute
+              ☁️ Cloud (AWS)
             </h4>
             <ul className="space-y-2">
-              {PERSONAL_DATA.skillCategories.cloudCompute.map((skill) => (
+              {PERSONAL_DATA.skillCategories.cloud.map((skill) => (
                 <li key={skill} className="text-sm font-bold">• {skill}</li>
               ))}
             </ul>
@@ -43,7 +56,7 @@ const About: React.FC = () => {
           {/* Networking */}
           <div className="bg-brutal-pink border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
-              🌐 Networking
+              🌐 Redes
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.networking.map((skill) => (
@@ -55,7 +68,7 @@ const About: React.FC = () => {
           {/* Security */}
           <div className="bg-brutal-red border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
-              🔐 Security
+              🔐 Segurança
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.security.map((skill) => (
@@ -64,26 +77,14 @@ const About: React.FC = () => {
             </ul>
           </div>
 
-          {/* Automation */}
+          {/* DevOps */}
           <div className="bg-brutal-purple border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
-              ⚙️ Automation & IaC
+              ⚙️ DevOps & Automação
             </h4>
             <ul className="space-y-2">
-              {PERSONAL_DATA.skillCategories.automation.map((skill) => (
+              {PERSONAL_DATA.skillCategories.devops.map((skill) => (
                 <li key={skill} className="text-sm font-bold text-white">• {skill}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Storage */}
-          <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
-            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
-              💾 Storage & Backup
-            </h4>
-            <ul className="space-y-2">
-              {PERSONAL_DATA.skillCategories.storage.map((skill) => (
-                <li key={skill} className="text-sm font-bold">• {skill}</li>
               ))}
             </ul>
           </div>
@@ -91,11 +92,23 @@ const About: React.FC = () => {
           {/* Frontend */}
           <div className="bg-brutal-blue border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
-              💻 Frontend Dev
+              💻 Front-end
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.frontend.map((skill) => (
                 <li key={skill} className="text-sm font-bold text-white">• {skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Soft Skills */}
+          <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
+            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
+              💼 Soft Skills
+            </h4>
+            <ul className="space-y-2">
+              {PERSONAL_DATA.skillCategories.softSkills.map((skill) => (
+                <li key={skill} className="text-sm font-bold">• {skill}</li>
               ))}
             </ul>
           </div>
