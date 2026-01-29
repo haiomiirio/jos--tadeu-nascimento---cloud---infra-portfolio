@@ -41,13 +41,25 @@ const About: React.FC = () => {
         <h3 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">MÃO NA MASSA</h3>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Cloud */}
+          {/* Cloud Multi-Cloud */}
           <div className="bg-brutal-blueLight border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
-              ☁️ Cloud (AWS)
+              ☁️ Multi-Cloud
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.cloud.map((skill) => (
+                <li key={skill} className="text-sm font-bold">• {skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* AWS Especializado */}
+          <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
+            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
+              🏆 AWS (3 Certs)
+            </h4>
+            <ul className="space-y-2">
+              {PERSONAL_DATA.skillCategories.aws.map((skill) => (
                 <li key={skill} className="text-sm font-bold">• {skill}</li>
               ))}
             </ul>
@@ -77,10 +89,22 @@ const About: React.FC = () => {
             </ul>
           </div>
 
-          {/* DevOps */}
+          {/* AI & Machine Learning */}
           <div className="bg-brutal-purple border-4 border-black p-6 shadow-brutal">
             <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
-              ⚙️ DevOps & Automação
+              🤖 IA & ML
+            </h4>
+            <ul className="space-y-2">
+              {PERSONAL_DATA.skillCategories.ai.map((skill) => (
+                <li key={skill} className="text-sm font-bold text-white">• {skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* DevOps */}
+          <div className="bg-brutal-blue border-4 border-black p-6 shadow-brutal">
+            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
+              ⚙️ DevOps
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.devops.map((skill) => (
@@ -90,13 +114,13 @@ const About: React.FC = () => {
           </div>
 
           {/* Frontend */}
-          <div className="bg-brutal-blue border-4 border-black p-6 shadow-brutal">
-            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2 text-white">
+          <div className="bg-white border-4 border-black p-6 shadow-brutal">
+            <h4 className="text-lg font-black mb-4 uppercase flex items-center gap-2">
               💻 Front-end
             </h4>
             <ul className="space-y-2">
               {PERSONAL_DATA.skillCategories.frontend.map((skill) => (
-                <li key={skill} className="text-sm font-bold text-white">• {skill}</li>
+                <li key={skill} className="text-sm font-bold">• {skill}</li>
               ))}
             </ul>
           </div>

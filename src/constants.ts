@@ -3,34 +3,46 @@ import { Project, Experience } from './types';
 
 export const PERSONAL_DATA = {
   name: "José Tadeu Nascimento",
-  role: "Estudante de Segurança Digital | AWS Certified | Cisco CCNA",
+  role: "Estudante de Segurança Digital | 3x AWS Certified | Azure | GCP",
   location: "Brasil",
-  bio: "Estudante de Segurança Digital com certificações AWS e Cisco. Busco oportunidades de estágio/júnior em Cloud e Infraestrutura para aplicar conhecimento técnico e experiência em liderança.",
-  summary: "Sou estudante de Segurança Digital (2º semestre) em transição de carreira. Minha trajetória é diferente: já fui Gerente de Confecção, o que me ensinou liderança, processos e resolução de problemas sob pressão. Hoje, trago essa maturidade profissional para o mundo tech. Embora eu busque posições de estágio ou júnior, já possuo certificações avançadas (AWS Solutions Architect Associate, Cloud Practitioner, Cisco CCNA e Fortinet) que provam minha dedicação e base técnica sólida. No UOL, coloquei a mão na massa com React, TypeScript, Docker e automação via GitHub Actions. Estou pronto para contribuir desde o dia 1, trazendo não apenas técnica, mas também maturidade para entender o impacto do meu trabalho no negócio.",
+  bio: "Estudante de Segurança Digital com 12+ certificações (AWS, Azure, GCP, Fortinet). Busco oportunidades de estágio/júnior em Cloud e Infraestrutura para aplicar conhecimento técnico e experiência em liderança.",
+  summary: "Sou estudante de Segurança Digital (2º semestre) em transição de carreira. Minha trajetória é diferente: já fui Gerente de Confecção, o que me ensinou liderança, processos e resolução de problemas sob pressão. Hoje, trago essa maturidade profissional para o mundo tech. Embora eu busque posições de estágio ou júnior, já possuo 12+ certificações profissionais (AWS Solutions Architect Associate, Developer Associate, AI Practitioner, Azure Fundamentals, Google Cloud, Fortinet) que provam minha dedicação e base técnica sólida. No UOL, coloquei a mão na massa com React, TypeScript, Docker e automação via GitHub Actions. Estou pronto para contribuir desde o dia 1, trazendo não apenas técnica, mas também maturidade para entender o impacto do meu trabalho no negócio.",
   skillCategories: {
     cloud: [
-      "AWS EC2, S3, VPC, IAM",
-      "AWS CloudFront & Route53",
-      "Certificação: AWS Solutions Architect Associate",
-      "Certificação: AWS Cloud Practitioner"
+      "AWS (3 Certificações Ativas)",
+      "Microsoft Azure Fundamentals",
+      "Google Cloud Platform (4 Certificados)",
+      "Multi-Cloud Architecture"
+    ],
+    aws: [
+      "✅ Solutions Architect Associate",
+      "✅ Developer Associate",
+      "✅ AI Practitioner",
+      "EC2, S3, VPC, Lambda, IAM"
     ],
     networking: [
-      "Cisco CCNA (Routing & Switching)",
       "Redes TCP/IP, DNS, DHCP",
-      "VPN & Firewalls (Fortinet)",
+      "VPN & Firewalls (Fortinet Certified)",
+      "Google Cloud Networking",
       "Troubleshooting de Conectividade"
     ],
     security: [
-      "Fortinet Certified",
+      "Fortinet Associate Cybersecurity",
       "Segurança Digital (Graduação)",
-      "Fundamentos de Criptografia",
-      "Gestão de Acessos (IAM)"
+      "AWS Security Groups & IAM",
+      "Fundamentos de Criptografia"
     ],
     devops: [
       "Docker & Containerização",
       "GitHub Actions (CI/CD)",
       "Automação com Shell/Python",
       "Git & Versionamento"
+    ],
+    ai: [
+      "AWS AI Practitioner Certified",
+      "Machine Learning Fundamentals",
+      "IA Generativa & LLMs",
+      "GitHub Copilot"
     ],
     frontend: [
       "React & TypeScript (UOL)",

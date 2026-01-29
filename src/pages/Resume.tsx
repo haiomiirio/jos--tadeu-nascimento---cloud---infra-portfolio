@@ -38,26 +38,55 @@ const Resume: React.FC = () => {
         </div>
         <div>
           <h2 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">CERTIFICAÇÕES</h2>
-          <div className="space-y-6">
-            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-blueLight transition-colors">
-              <p className="font-black text-lg uppercase leading-none mb-2">🏆 AWS Solutions Architect - Associate</p>
-              <p className="text-black text-xs font-bold uppercase">CERTIFICADO AWS</p>
-              <p className="text-sm mt-2 font-medium">Design e deploy de arquiteturas escaláveis e resilientes na AWS</p>
+          <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
+            {/* AWS - Principais */}
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-blueLight transition-colors">
+              <p className="font-black text-base uppercase leading-none mb-1">🏆 AWS Solutions Architect - Associate</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Mar 2025 - Mar 2028</p>
+              <p className="text-xs font-medium">Design e deploy de arquiteturas escaláveis na AWS</p>
             </div>
-            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-pink transition-colors">
-              <p className="font-black text-lg uppercase leading-none mb-2">☁️ AWS Cloud Practitioner</p>
-              <p className="text-black text-xs font-bold uppercase">CERTIFICADO AWS</p>
-              <p className="text-sm mt-2 font-medium">Fundamentos de Cloud Computing e serviços AWS</p>
+            
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-purple transition-colors">
+              <p className="font-black text-base uppercase leading-none mb-1">💻 AWS Certified Developer - Associate</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Set 2025 - Set 2028</p>
+              <p className="text-xs font-medium">Desenvolvimento de aplicações na AWS</p>
             </div>
-            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-purple transition-colors">
-              <p className="font-black text-lg uppercase leading-none mb-2">🌐 Cisco CCNA</p>
-              <p className="text-black text-xs font-bold uppercase">CERTIFICADO CISCO</p>
-              <p className="text-sm mt-2 font-medium">Routing, Switching, Redes TCP/IP, Segurança de Redes</p>
+
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-pink transition-colors">
+              <p className="font-black text-base uppercase leading-none mb-1">🤖 AWS Certified AI Practitioner</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Abr 2025 - Abr 2028</p>
+              <p className="text-xs font-medium">Machine Learning e IA Generativa na AWS</p>
             </div>
-            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-red transition-colors">
-              <p className="font-black text-lg uppercase leading-none mb-2 text-white">🔐 Fortinet Certified</p>
-              <p className="text-white text-xs font-bold uppercase">CERTIFICADO FORTINET</p>
-              <p className="text-sm mt-2 font-medium text-white">Segurança de redes e firewalls</p>
+
+            {/* Microsoft */}
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-blueLight transition-colors">
+              <p className="font-black text-base uppercase leading-none mb-1">☁️ Microsoft Azure Fundamentals</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Set 2025</p>
+              <p className="text-xs font-medium">Fundamentos de Cloud Computing na Azure</p>
+            </div>
+
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-yellow transition-colors">
+              <p className="font-black text-sm uppercase leading-none mb-1">🤖 GitHub Copilot Challenge</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Jul 2025</p>
+            </div>
+
+            {/* Fortinet */}
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-red transition-colors">
+              <p className="font-black text-base uppercase leading-none mb-1 text-white">🔐 Fortinet Certified Associate Cybersecurity</p>
+              <p className="text-xs font-bold text-white mb-1">Out 2024 - Out 2026</p>
+              <p className="text-xs font-medium text-white">Segurança de redes e firewalls</p>
+            </div>
+
+            <div className="bg-white border-4 border-black p-5 shadow-brutal">
+              <p className="font-black text-sm uppercase leading-none mb-1">🔐 Fortinet Fundamentals Cybersecurity</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Set 2024 - Out 2026</p>
+            </div>
+
+            {/* Google Cloud */}
+            <div className="bg-white border-4 border-black p-5 shadow-brutal hover:bg-brutal-blueLight transition-colors">
+              <p className="font-black text-sm uppercase leading-none mb-1">☁️ Google Cloud Computing Foundations</p>
+              <p className="text-xs font-bold text-brutal-blue mb-1">Jun 2024 • 4 Certificados</p>
+              <p className="text-xs font-medium">Fundamentals, Infrastructure, Networking & Security</p>
             </div>
           </div>
         </div>
