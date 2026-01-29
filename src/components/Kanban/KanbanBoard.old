@@ -1,0 +1,559 @@
+
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { KanbanTask } from '../../types';
+import Column from './Column';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+
+interface ColumnData {
+  id: string;
+  title: string;
+  status: KanbanTask['status'];
+  color: string;
+  x?: number;
+  y?: number;
+}
+
+interface KanbanBoardProps {
+  tasks?: KanbanTask[];
+  isAdmin: boolean;
+  currentUserId?: string;
+  onUpdateTask?: (id: string, updates: Partial<KanbanTask>) => void;
+  onDeleteTask?: (id: string) => void;
+}
+
+const KanbanBoard: React.FC<KanbanBoardProps> = ({
+  tasks: externalTasks,
+  isAdmin,
+  currentUserId,
+  onUpdateTask: externalOnUpdateTask,
+  onDeleteTask: externalOnDeleteTask,
+}) => {
+  // Estado do localStorage
+  const [storedTasks, setStoredTasks] = useLocalStorage<KanbanTask[]>('kanban-tasks', []);
+  const [tasks, setTasks] = useState<KanbanTask[]>(externalTasks || storedTasks);
+
+  // Colunas customizáveis (Modelo Trello)
+  const [columns, setColumns] = useLocalStorage<ColumnData[]>('kanban-columns', [
+    { id: '0', title: '🔓 Tarefas Soltas', status: 'unassigned', color: 'bg-red-50' },
+    { id: '1', title: '📋 Backlog', status: 'todo', color: 'bg-gray-100' },
+    { id: '2', title: '🎨 Design', status: 'todo', color: 'bg-blue-50' },
+    { id: '3', title: '✏️ A Fazer', status: 'todo', color: 'bg-purple-50' },
+    { id: '4', title: '⚙️ Em andamento', status: 'doing', color: 'bg-yellow-50' },
+    { id: '5', title: '🔍 Revisão', status: 'doing', color: 'bg-orange-50' },
+    { id: '6', title: '🧪 Teste', status: 'doing', color: 'bg-pink-50' },
+    { id: '7', title: '✅ Concluído 🎉', status: 'done', color: 'bg-green-50' },
+  ]);
+
+  const [loadingMore, setLoadingMore] = useState<string | null>(null);
+  const boardRef = useRef<HTMLDivElement>(null);
+  const [draggedColumnPos, setDraggedColumnPos] = useState<{ colId: string; startX: number; startY: number } | null>(null);
+  const [zoom, setZoom] = useState<number>(1);
+  const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newColumnTitle, setNewColumnTitle] = useState('');
+  const [selectedTaskColumn, setSelectedTaskColumn] = useState('');
+  const [taskPriority, setTaskPriority] = useState<'low' | 'medium' | 'high'>('medium');
+  const [taskLabels, setTaskLabels] = useState('');
+  const [taskDueDate, setTaskDueDate] = useState('');
+  const innerRef = useRef<HTMLDivElement>(null);
+  
+  // Estados para menu flutuante
+  const [menuMinimized, setMenuMinimized] = useState(false);
+  const [menuPos, setMenuPos] = useState({ x: 0, y: 0 });
+  const [draggingMenu, setDraggingMenu] = useState<{ startX: number; startY: number } | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Sincroniza tasks externas
+  useEffect(() => {
+    if (externalTasks) {
+      setTasks(externalTasks);
+    }
+  }, [externalTasks]);
+
+  // Migra tarefas antigas que não têm columnId
+  useEffect(() => {
+    setTasks(prevTasks => {
+      const migratedTasks = prevTasks.map(task => {
+        if (!task.columnId) {
+          // Atribui a tarefa para a coluna apropriada baseada no status
+          let columnId = '0'; // Padrão: Tarefas Soltas
+          if (task.status === 'todo') columnId = '1'; // Backlog
+          if (task.status === 'doing') columnId = '4'; // Em andamento
+          if (task.status === 'done') columnId = '7'; // Concluído
+          return { ...task, columnId };
+        }
+        return task;
+      });
+      return migratedTasks;
+    });
+  }, []);
+
+  // Atualiza localStorage quando tasks mudam
+  useEffect(() => {
+    if (!externalTasks) {
+      setStoredTasks(tasks);
+    }
+  }, [tasks, externalTasks, setStoredTasks]);
+
+  const handleUpdateTask = (id: string, updates: Partial<KanbanTask>) => {
+    if (externalOnUpdateTask) {
+      externalOnUpdateTask(id, updates);
+    } else {
+      setTasks(tasks.map((t) => (t.id === id ? { ...t, ...updates } : t)));
+    }
+  };
+
+  const handleDeleteTask = (id: string) => {
+    if (externalOnDeleteTask) {
+      externalOnDeleteTask(id);
+    } else {
+      setTasks(tasks.filter((t) => t.id !== id));
+    }
+  };
+
+  // Scroll infinito nas colunas
+  const handleLoadMore = useCallback((columnId: string) => {
+    setLoadingMore(columnId);
+    console.log(`Carregando mais tarefas para coluna: ${columnId}`);
+    
+    // Simula carregamento de mais tasks
+    setTimeout(() => {
+      const column = columns.find((c) => c.id === columnId);
+      if (!column) {
+        setLoadingMore(null);
+        return;
+      }
+
+      const newTasks: KanbanTask[] = Array.from({ length: 5 }, (_, i) => ({
+        id: `task-${Date.now()}-${i}`,
+        title: `Nova Tarefa ${Date.now()}-${i}`,
+        description: 'Carregada dinamicamente',
+        status: column.status as KanbanTask['status'],
+        createdAt: Date.now(),
+        isPublic: false,
+      }));
+      
+      setTasks([...tasks, ...newTasks]);
+      setLoadingMore(null);
+      console.log(`✓ ${newTasks.length} novas tarefas adicionadas à coluna ${columnId}`);
+    }, 800);
+  }, [columns, tasks]);
+
+  // Zoom com Shift + Scroll
+  const handleWheel = useCallback((e: React.WheelEvent) => {
+    // Apenas com Shift para não interferir com scroll normal
+    if (e.shiftKey) {
+      e.preventDefault();
+      setZoom((prevZoom) => {
+        const newZoom = e.deltaY > 0 ? prevZoom - 0.15 : prevZoom + 0.15;
+        return Math.max(0.3, newZoom);
+      });
+    }
+  }, []);
+
+  // Drag para posicionar coluna livremente
+  const handleMouseDown = (e: React.MouseEvent, columnId: string) => {
+    if (!isAdmin || !e.button === 0) return; // Apenas clique esquerdo
+    
+    // Se clicar no botão de fechar, não iniciar drag
+    if ((e.target as HTMLElement).closest('button')) return;
+    
+    setDraggedColumnPos({
+      colId: columnId,
+      startX: e.clientX,
+      startY: e.clientY
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!draggedColumnPos || !boardRef.current) return;
+
+    const boardRect = boardRef.current.getBoundingClientRect();
+    const deltaX = e.clientX - draggedColumnPos.startX;
+    const deltaY = e.clientY - draggedColumnPos.startY;
+
+    // Atualizar posição da coluna
+    setColumns(columns.map(col => {
+      if (col.id === draggedColumnPos.colId) {
+        return {
+          ...col,
+          x: (col.x || 0) + deltaX,
+          y: (col.y || 0) + deltaY
+        };
+      }
+      return col;
+    }));
+
+    // Atualizar posição inicial para suavidade
+    setDraggedColumnPos({
+      ...draggedColumnPos,
+      startX: e.clientX,
+      startY: e.clientY
+    });
+  };
+
+  const handleMouseUp = () => {
+    setDraggedColumnPos(null);
+    setDraggingMenu(null);
+  };
+
+  // Drag do menu flutuante
+  const handleMenuDragStart = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button, input, select')) return;
+    setDraggingMenu({
+      startX: e.clientX,
+      startY: e.clientY
+    });
+  };
+
+  const handleMenuDragMove = (e: React.MouseEvent) => {
+    if (!draggingMenu || !menuRef.current) return;
+
+    const deltaX = e.clientX - draggingMenu.startX;
+    const deltaY = e.clientY - draggingMenu.startY;
+
+    setMenuPos({
+      x: menuPos.x + deltaX,
+      y: menuPos.y + deltaY
+    });
+
+    setDraggingMenu({
+      startX: e.clientX,
+      startY: e.clientY
+    });
+  };
+
+  // Adicionar tarefa
+  const addTask = (columnId?: string) => {
+    if (!newTaskTitle.trim()) return;
+    
+    // Se não selecionou coluna, usa a coluna "Tarefas Soltas"
+    const targetColumnId = columnId || '0';
+    const targetColumn = columns.find(c => c.id === targetColumnId);
+    if (!targetColumn) return;
+
+    const newTask: KanbanTask = {
+      id: Math.random().toString(36).substring(7),
+      title: newTaskTitle,
+      description: '',
+      status: targetColumn.status,
+      columnId: targetColumnId,
+      isPublic: true,
+      createdAt: Date.now(),
+      priority: taskPriority,
+      labels: taskLabels.split(',').map(l => l.trim()).filter(l => l),
+      dueDate: taskDueDate || undefined,
+      userId: currentUserId,
+    };
+    setTasks([...tasks, newTask]);
+    setNewTaskTitle('');
+    setSelectedTaskColumn('');
+    setTaskPriority('medium');
+    setTaskLabels('');
+    setTaskDueDate('');
+  };
+
+  // Remover tarefa
+  const removeTask = (id: string) => {
+    setTasks(tasks.filter(t => t.id !== id));
+  };
+
+  // Adicionar coluna
+  const addNewColumn = () => {
+    if (!newColumnTitle.trim()) return;
+    
+    // Calcular posição automática para evitar sobreposição
+    const columnWidth = 384; // w-96
+    const columnHeight = 650; // h-[650px]
+    const spacing = 20; // gap-4 (16px) + padding
+    
+    // Grid de posições (linhas e colunas)
+    let x = -columnWidth / 2;
+    let y = -columnHeight / 2;
+    
+    // Encontrar próxima posição disponível
+    let positionTaken = true;
+    let row = 0;
+    let col = 0;
+    
+    while (positionTaken) {
+      const testX = col * (columnWidth + spacing);
+      const testY = row * (columnHeight + spacing);
+      
+      positionTaken = columns.some(c => {
+        const cX = c.x || 0;
+        const cY = c.y || 0;
+        const distance = Math.sqrt(Math.pow(cX - testX, 2) + Math.pow(cY - testY, 2));
+        return distance < columnWidth + spacing;
+      });
+      
+      if (!positionTaken) {
+        x = testX;
+        y = testY;
+      } else {
+        col++;
+        if (col > 2) {
+          col = 0;
+          row++;
+        }
+      }
+    }
+    
+    const newColumn: ColumnData = {
+      id: Math.random().toString(36).substring(7),
+      title: newColumnTitle,
+      status: 'todo',
+      color: 'bg-blue-50',
+      x,
+      y
+    };
+    setColumns([...columns, newColumn]);
+    setNewColumnTitle('');
+  };
+
+  // Remover coluna
+  const removeColumn = (id: string) => {
+    setColumns(columns.filter(c => c.id !== id));
+  };
+
+  return (
+    <div className="w-full flex flex-col gap-4 rounded-lg"
+      style={{
+        background: `
+          linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(240,244,248,0.95) 100%)
+        `,
+        backdropFilter: 'blur(10px)',
+      }}
+    >
+      {/* Board com Scroll Infinito Horizontal */}
+      <div
+        ref={boardRef}
+        onWheel={handleWheel}
+        onMouseMove={(e) => {
+          handleMouseMove(e);
+          handleMenuDragMove(e);
+        }}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className="w-full rounded-lg border-2 border-gray-300 relative shadow-lg flex items-center justify-center overflow-hidden"
+        style={{
+          height: 'calc(100vh - 350px)',
+          minHeight: '600px',
+          background: `
+            linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #1e3a5f 50%, #2d1b4e 75%, #0f172a 100%)
+          `,
+        }}
+      >
+        {/* Grid Tech Pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-20"
+          style={{
+            backgroundImage: `
+              linear-gradient(90deg, #3b82f6 1px, transparent 1px),
+              linear-gradient(0deg, #3b82f6 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+          }}
+        />
+
+        {/* Glow Elements */}
+        <div
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+          style={{
+            background: `
+              radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%)
+            `,
+          }}
+        />
+
+        {/* Hexagon Pattern Overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-15"
+          style={{
+            backgroundImage: `
+              url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 1 L43.3 11 L43.3 39 L25 49 L6.7 39 L6.7 11 Z' stroke='%233b82f6' stroke-width='1.5' fill='none'/%3E%3C/svg%3E")
+            `,
+            backgroundSize: '100px 100px',
+          }}
+        />
+
+        {/* Accent Lines */}
+        <div
+          className="absolute top-0 left-0 right-0 h-1 pointer-events-none"
+          style={{
+            background: `linear-gradient(90deg, transparent, #3b82f6, transparent)`,
+          }}
+        />
+
+        {/* NAV Flutuante Elegante */}
+        <div 
+          ref={menuRef}
+          onMouseDown={handleMenuDragStart}
+          className="absolute z-30 bg-white/95 backdrop-blur-md border-2 border-gray-300 rounded-xl shadow-2xl p-3 w-full max-w-xl mx-auto transition-all"
+          style={{
+            left: `calc(50% + ${menuPos.x}px)`,
+            top: `${menuPos.y + 6}px`,
+            transform: 'translateX(-50%)',
+            minHeight: menuMinimized ? 'auto' : 'auto'
+          }}
+        >
+          <div className="flex flex-col gap-3">
+            {/* Header Nav com Drag Handle */}
+            <div className="flex items-center justify-between cursor-move select-none hover:bg-gray-100/50 p-2 rounded-lg">
+              <h3 className="font-bold text-sm text-gray-800 flex items-center gap-2">
+                <span className="text-xl">⚙️</span> 
+                <span>{menuMinimized ? '...' : 'Controles'}</span>
+              </h3>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full whitespace-nowrap">
+                  {columns.length} | {tasks.length}
+                </span>
+                <button
+                  onClick={() => setMenuMinimized(!menuMinimized)}
+                  className="text-gray-600 hover:text-gray-800 hover:bg-gray-200 p-1 rounded transition-colors"
+                  title={menuMinimized ? 'Expandir' : 'Minimizar'}
+                >
+                  {menuMinimized ? '▼' : '▲'}
+                </button>
+              </div>
+            </div>
+
+            {/* Conteúdo do Menu */}
+            {!menuMinimized && (
+              <>
+                {/* Secção: Criar Tarefa */}
+                <div className="border-t pt-2">
+                  <label className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5 block">➕ Tarefa</label>
+                  <div className="flex gap-1.5 flex-wrap">
+                    <input
+                      type="text"
+                      value={newTaskTitle}
+                      onChange={(e) => setNewTaskTitle(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && addTask(selectedTaskColumn || undefined)}
+                      placeholder="Título..."
+                      className="flex-1 min-w-[100px] px-2 py-1.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-blue-500 focus:bg-blue-50 transition-colors"
+                    />
+                    <select
+                      value={selectedTaskColumn}
+                      onChange={(e) => setSelectedTaskColumn(e.target.value)}
+                      className="px-2 py-1.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-blue-500"
+                    >
+                      <option value="">Solta</option>
+                      {columns.filter(col => col.id !== '0').map((col) => (
+                        <option key={col.id} value={col.id}>{col.title.slice(0, 10)}</option>
+                      ))}
+                    </select>
+                    <select
+                      value={taskPriority}
+                      onChange={(e) => setTaskPriority(e.target.value as 'low' | 'medium' | 'high')}
+                      className="px-2 py-1.5 border border-gray-300 rounded-lg text-xs"
+                    >
+                      <option value="low">🟢</option>
+                      <option value="medium">🟡</option>
+                      <option value="high">🔴</option>
+                    </select>
+                    <button
+                      onClick={() => addTask(selectedTaskColumn || undefined)}
+                      className="bg-green-500 hover:bg-green-600 text-white px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-colors"
+                    >
+                      ✓
+                    </button>
+                  </div>
+                </div>
+
+                {/* Secção: Criar Lista */}
+                <div className="border-t pt-2">
+                  <label className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5 block">📋 Lista</label>
+                  <div className="flex gap-1.5">
+                    <input
+                      type="text"
+                      value={newColumnTitle}
+                      onChange={(e) => setNewColumnTitle(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && addNewColumn()}
+                      placeholder="Nome..."
+                      className="flex-1 px-2 py-1.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:border-blue-500 focus:bg-blue-50 transition-colors"
+                    />
+                    <button
+                      onClick={addNewColumn}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-colors"
+                    >
+                      ✨
+                    </button>
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div className="text-xs text-gray-600 border-t pt-2 flex items-center justify-between">
+                  <span>🔍 {Math.round(zoom * 100)}%</span>
+                  <span className="text-gray-500">Shift+Scroll</span>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Container Centralizado com Posicionamento Livre */}
+        <div
+          ref={innerRef}
+          className="relative w-full h-full"
+          style={{ 
+            transform: `scale(${zoom})`, 
+            transformOrigin: 'center center'
+          }}
+        >
+          {columns.map((col) => (
+            <div
+              key={col.id}
+              onMouseDown={(e) => handleMouseDown(e, col.id)}
+              className={`absolute transition-opacity ${
+                draggedColumnPos?.colId === col.id ? 'opacity-70' : 'opacity-100'
+              } ${isAdmin ? 'cursor-move' : ''}`}
+              style={{
+                left: `calc(50% + ${col.x || 0}px - 192px)`,
+                top: `calc(50% + ${col.y || 0}px - 325px)`,
+              }}
+            >
+              {/* Botão Remover Coluna */}
+              {isAdmin && (
+                <button
+                  onClick={() => removeColumn(col.id)}
+                  className="absolute top-0 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded hover:bg-red-600 transition-colors z-20"
+                  title="Remover coluna"
+                >
+                  ✕
+                </button>
+              )}
+              <Column
+                id={col.id}
+                title={col.title}
+                status={col.status}
+                color={col.color}
+                tasks={tasks
+                  .filter((t) => t.columnId === col.id)
+                  .sort((a, b) => (b.createdAt as number) - (a.createdAt as number))}
+                isAdmin={isAdmin}
+                currentUserId={currentUserId}
+                onUpdateTask={handleUpdateTask}
+                onDeleteTask={(id) => {
+                  removeTask(id);
+                  handleDeleteTask(id);
+                }}
+                onLoadMore={() => handleLoadMore(col.id)}
+                hasMore={true}
+                isLoading={loadingMore === col.id}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contador de Tasks */}
+      <div className="text-xs font-semibold text-gray-600">
+        📊 {tasks.length} tarefas | 📋 {columns.length} colunas
+      </div>
+    </div>
+  );
+};
+
+export default KanbanBoard;

@@ -1,0 +1,8 @@
+
+{
+  "name": "José Tadeu Nascimento - Cloud & Infra Portfolio",
+  "description": "Portfólio profissional com currículo integrado, sistema Kanban e assistente IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
