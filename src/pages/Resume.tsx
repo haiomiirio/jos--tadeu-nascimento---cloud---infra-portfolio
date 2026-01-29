@@ -31,21 +31,28 @@ const Resume: React.FC = () => {
         <div>
           <h2 className="text-3xl font-black mb-8 uppercase bg-brutal-pink border-4 border-black px-4 py-2 inline-block">FORMAÇÃO</h2>
           <div className="bg-white border-4 border-black p-8 shadow-brutalLarge">
-            <h4 className="font-black text-xl mb-2 uppercase leading-none">Análise e Desenvolvimento de Sistemas</h4>
+            <h4 className="font-black text-xl mb-2 uppercase leading-none">Bacharelado em Segurança Digital</h4>
             <p className="text-brutal-blue font-bold text-sm mb-4">GRADUAÇÃO SUPERIOR</p>
-            <p className="text-black font-medium border-t-2 border-black pt-4">Em andamento • Focado em fundamentos de software e sistemas.</p>
+            <p className="text-black font-medium border-t-2 border-black pt-4">Em andamento • Focado em Segurança da Informação, Criptografia, Análise de Vulnerabilidades e Gestão de Riscos.</p>
           </div>
         </div>
         <div>
-          <h2 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">CERTIFICADOS</h2>
+          <h2 className="text-3xl font-black mb-8 uppercase bg-brutal-yellow border-4 border-black px-4 py-2 inline-block">CERTIFICAÇÕES</h2>
           <div className="space-y-6">
             <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-blueLight transition-colors">
-              <p className="font-black text-lg uppercase leading-none">AWS Cloud Practitioner</p>
-              <p className="text-black text-xs font-bold uppercase mt-2">STATUS: EM ANDAMENTO</p>
+              <p className="font-black text-lg uppercase leading-none mb-2">🏆 AWS Solutions Architect - Associate</p>
+              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
+              <p className="text-sm mt-2 font-medium">Design de arquiteturas escaláveis e resilientes na AWS</p>
             </div>
             <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-pink transition-colors">
-              <p className="font-black text-lg uppercase leading-none">Linux & Redes</p>
-              <p className="text-black text-xs font-bold uppercase mt-2">STATUS: CONCLUÍDO</p>
+              <p className="font-black text-lg uppercase leading-none mb-2">☁️ AWS Cloud Practitioner</p>
+              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
+              <p className="text-sm mt-2 font-medium">Fundamentos de Cloud Computing e serviços AWS</p>
+            </div>
+            <div className="bg-white border-4 border-black p-6 shadow-brutal hover:bg-brutal-purple transition-colors">
+              <p className="font-black text-lg uppercase leading-none mb-2">🌐 Cisco CCNA</p>
+              <p className="text-black text-xs font-bold uppercase">STATUS: CERTIFICADO</p>
+              <p className="text-sm mt-2 font-medium">Routing, Switching, Segurança de Redes</p>
             </div>
           </div>
         </div>
