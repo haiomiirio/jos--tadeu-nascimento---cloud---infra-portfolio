@@ -29,6 +29,20 @@ const Home: React.FC = () => {
           {PERSONAL_DATA.bio}
         </p>
 
+        {/* Credly Badge - Destaque para Certificações */}
+        <div className="mb-12">
+          <a 
+            href="https://www.credly.com/users/jose-tadeu-nascimento-da-silva" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block bg-brutal-pink border-4 border-black px-8 py-4 shadow-brutalLarge hover:translate-x-2 hover:translate-y-2 hover:shadow-none transition-all"
+          >
+            <span className="text-2xl font-black uppercase flex items-center gap-3">
+              🏆 VER TODAS CERTIFICAÇÕES NO CREDLY
+            </span>
+          </a>
+        </div>
+
         {/* Stats Section - O que recrutadores querem ver */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-12">
           <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal hover:scale-105 transition-transform">

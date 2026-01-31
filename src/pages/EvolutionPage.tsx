@@ -42,7 +42,7 @@ const EvolutionPage: React.FC<EvolutionPageProps> = ({ stories, onAddStory, onDe
           🚀 Evolução
         </h1>
         <p className="text-sm font-bold uppercase tracking-widest text-gray-700">
-          Compartilhe sua jornada de crescimento e inspire outros
+          Compartilhe sua jornada de crescimento
         </p>
       </div>
 

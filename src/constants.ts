@@ -70,8 +70,10 @@ export const PERSONAL_DATA = {
   ],
   socials: {
     github: "https://github.com/haiomiirio",
-    linkedin: "https://www.linkedin.com/in/josé-tadeu-nascimento/",
-    email: "tadeu.nascimento@exemplo.com"
+    linkedin: "https://www.linkedin.com/in/jos%C3%A9-tadeu-nascimento/",
+    email: "josetadeundasilva@gmail.com",
+    whatsapp: "5511951534996",
+    phone: "11951534996"
   }
 };
 

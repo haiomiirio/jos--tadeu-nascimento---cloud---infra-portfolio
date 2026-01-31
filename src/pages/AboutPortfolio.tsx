@@ -14,12 +14,13 @@ const AboutPortfolio: React.FC = () => {
             <span className="text-3xl">🚀</span> Como foi construído
           </h3>
           <p className="text-lg leading-tight mb-4 font-bold">
-            Este portfólio foi desenvolvido como um <span className="bg-brutal-yellow px-2">projeto real</span> para demonstrar 
+            Este portfólio foi desenvolvido por mim <span className="bg-brutal-yellow px-2">com auxílio de Inteligência Artificial</span> como um <span className="bg-brutal-yellow px-2">projeto real</span> para demonstrar 
             minhas habilidades técnicas em <span className="bg-brutal-blueLight px-2">React</span>, <span className="bg-brutal-pink px-2">TypeScript</span> e <span className="bg-brutal-purple px-2 text-white">DevOps</span>.
           </p>
           <p className="text-base leading-snug text-gray-700">
             Não apenas criei um site estático — desenvolvi uma aplicação completa com gerenciamento de estado, 
-            autenticação, integração com IA e deploy automatizado. Isso mostra que sei construir soluções reais, não apenas tutoriais.
+            autenticação, integração com IA e deploy automatizado. A IA foi uma parceira no desenvolvimento, mas todas as decisões técnicas, 
+            arquitetura e implementação foram coordenadas por mim. Isso mostra que sei construir soluções reais, não apenas tutoriais.
           </p>
         </div>
 

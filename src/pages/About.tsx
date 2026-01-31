@@ -28,8 +28,14 @@ const About: React.FC = () => {
                <a href={PERSONAL_DATA.socials.linkedin} target="_blank" rel="noopener noreferrer" className="brutal-btn bg-brutal-blue text-white px-6 py-2 text-sm">
                  LINKEDIN
                </a>
+               <a href="https://www.credly.com/users/jose-tadeu-nascimento-da-silva" target="_blank" rel="noopener noreferrer" className="brutal-btn bg-brutal-pink text-white px-6 py-2 text-sm">
+                 🏆 CREDLY
+               </a>
                <a href={`mailto:${PERSONAL_DATA.socials.email}`} className="brutal-btn bg-white px-6 py-2 text-sm">
                  E-MAIL
+               </a>
+               <a href={`https://wa.me/${PERSONAL_DATA.socials.whatsapp}`} target="_blank" rel="noopener noreferrer" className="brutal-btn bg-green-500 text-white px-6 py-2 text-sm">
+                 WHATSAPP
                </a>
              </div>
           </div>
