@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadeu | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                brutal: {
+                  bg: '#FEFFF0',
+                  black: '#000000',
+                  yellow: '#FFDC58',
+                  pink: '#F3ABCB',
+                  blueLight: '#BAE6FF',
+                  blue: '#61BCFF',
+                  red: '#FF6258',
+                  purple: '#C5A1FF'
+                }
+              },
+              fontFamily: {
+                sans: ['Space Grotesk', 'sans-serif'],
+                display: ['Space Grotesk', 'sans-serif'],
+              },
+              boxShadow: {
+                brutal: '4px 4px 0px 0px rgba(0,0,0,1)',
+                brutalHover: '2px 2px 0px 0px rgba(0,0,0,1)',
+                brutalLarge: '8px 8px 0px 0px rgba(0,0,0,1)',
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #FEFFF0;
+            color: #000000;
+        }
+        .brutal-card {
+            background: white;
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.1s ease;
+        }
+        .brutal-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        }
+        .brutal-btn {
+            border: 2px solid black;
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.1s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .brutal-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+        }
+        .brutal-btn:active {
+            transform: translate(4px, 4px);
+        }
+        
+        /* Scrollbar Global */
+        ::-webkit-scrollbar {
+            width: 14px;
+            height: 14px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FEFFF0;
+            border: 2px solid black;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFDC58;
+            border: 2px solid black;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #000;
+        }
+        
+        /* Custom horizontal scrollbar para o Kanban */
+        .custom-horizontal-scrollbar::-webkit-scrollbar {
+            height: 16px;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-track {
+            background: #eee;
+            border-top: 4px solid black;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+            background: #FFDC58;
+            border: 3px solid black;
+        }
+
+        /* Custom scrollbar para as colunas internas */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #000;
+            border: 1px solid white;
+        }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/jos--tadeu-nascimento---cloud---infra-portfolio/assets/index-am_rl2G0.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
