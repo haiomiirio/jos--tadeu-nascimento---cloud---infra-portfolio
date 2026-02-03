@@ -5,7 +5,7 @@ export const PERSONAL_DATA = {
   name: "José Tadeu Nascimento",
   role: "Estudante de Segurança Digital | 4x AWS Certified | Azure | GCP",
   location: "Brasil",
-  bio: "Estudante de Segurança Digital com 12+ certificações (AWS, Azure, GCP, Fortinet). Busco oportunidades de estágio/júnior em Cloud e Infraestrutura para aplicar conhecimento técnico e experiência em liderança.",
+  bio: "Estudante de Segurança Digital e desenvolvedor, com mais de 12 certificações em Cloud e Infraestrutura (AWS, Azure, GCP, Fortinet), focado em aprendizado contínuo e aplicação prática do conhecimento técnico.",
   summary: "Atuo na área de tecnologia com foco em aprender continuamente e evoluir profissionalmente. Gosto de trabalhar em projetos que valorizam organização, boas práticas e crescimento técnico, sempre buscando ampliar meus conhecimentos e contribuir com soluções bem estruturadas.",
   skillCategories: {
     cloud: [
