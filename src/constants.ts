@@ -6,7 +6,7 @@ export const PERSONAL_DATA = {
   role: "Estudante de Segurança Digital | 4x AWS Certified | Azure | GCP",
   location: "Brasil",
   bio: "Estudante de Segurança Digital com 12+ certificações (AWS, Azure, GCP, Fortinet). Busco oportunidades de estágio/júnior em Cloud e Infraestrutura para aplicar conhecimento técnico e experiência em liderança.",
-  summary: "Sou estudante de Segurança Digital (2º semestre) em transição de carreira. Minha trajetória é diferente: já fui Gerente de Confecção, o que me ensinou liderança, processos e resolução de problemas sob pressão. Hoje, trago essa maturidade profissional para o mundo tech. Embora eu busque posições de estágio ou júnior, já possuo 12+ certificações profissionais (AWS Solutions Architect Associate, Developer Associate, AI Practitioner, Cloud Practitioner, Azure Fundamentals, Google Cloud, Fortinet) que provam minha dedicação e base técnica sólida. No UOL, coloquei a mão na massa com React, TypeScript, Docker e automação via GitHub Actions. Estou pronto para contribuir desde o dia 1, trazendo não apenas técnica, mas também maturidade para entender o impacto do meu trabalho no negócio.",
+  summary: "Atuo na área de tecnologia com foco em aprender continuamente e evoluir profissionalmente. Gosto de trabalhar em projetos que valorizam organização, boas práticas e crescimento técnico, sempre buscando ampliar meus conhecimentos e contribuir com soluções bem estruturadas.",
   skillCategories: {
     cloud: [
       "AWS (4 Certificações Ativas)",

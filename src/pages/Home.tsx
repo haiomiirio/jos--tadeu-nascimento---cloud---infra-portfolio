@@ -100,7 +100,7 @@ const Home: React.FC = () => {
         <div className="max-w-3xl mx-auto mb-12 border-4 border-black bg-brutal-red p-8 shadow-brutal">
           <p className="text-2xl font-black uppercase text-white mb-4">🚀 Pronto para começar!</p>
           <p className="text-sm font-bold text-white mb-6">
-            Busco estágio/júnior em Cloud, Infraestrutura ou Suporte. Certificações provam conhecimento. Experiência no UOL prova que entrego. Maturidade profissional garante que agrego valor desde o dia 1.
+            Estou construindo minha jornada em tecnologia com curiosidade, estudo contínuo e vontade de aprender na prática. Gosto de entender como as coisas funcionam, organizar processos e contribuir com soluções que façam sentido, sempre buscando evoluir e agregar valor por onde passo.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
