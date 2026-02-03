@@ -18,7 +18,7 @@ const About: React.FC = () => {
           
           <div className="bg-brutal-purple border-4 border-black p-6 shadow-brutal -rotate-1">
              <h3 className="text-xl font-black mb-2 uppercase text-white">🎯 OBJETIVO</h3>
-             <p className="font-bold text-white">Estágio ou posição júnior em Cloud, Infraestrutura ou Suporte onde eu possa aplicar minhas certificações e contribuir desde o dia 1.</p>
+             <p className="font-bold text-white">Atuar na área de tecnologia, com interesse em Cloud, infraestrutura e suporte, aplicando conhecimentos técnicos, aprendendo continuamente e contribuindo de forma consistente desde o início.</p>
           </div>
 
           <div className="bg-brutal-yellow border-4 border-black p-6 shadow-brutal">
