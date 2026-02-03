@@ -12,12 +12,11 @@ import Process from './pages/Process';
 import AuthPage from './pages/AuthPage';
 import RestrictedArea from './pages/RestrictedArea';
 import FinancePage from './pages/FinancePage';
-import EvolutionPage from './pages/EvolutionPage';
 import AboutPortfolio from './pages/AboutPortfolio';
 import AdminPanel from './components/Admin/AdminPanel';
 import AdminLogin from './components/Auth/AdminLogin';
 import AiChat from './AiChat';
-import { KanbanTask, User, FinanceEntry, EvolutionStory, KanbanContribution } from './types';
+import { KanbanTask, User, FinanceEntry, KanbanContribution } from './types';
 import { storage } from './services/storage';
 
 const App: React.FC = () => {
@@ -27,13 +26,11 @@ const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [tasks, setTasks] = useState<KanbanTask[]>([]);
   const [financeEntries, setFinanceEntries] = useState<FinanceEntry[]>([]);
-  const [evolutionStories, setEvolutionStories] = useState<EvolutionStory[]>([]);
   const [kanbanContributions, setKanbanContributions] = useState<KanbanContribution[]>([]);
 
   useEffect(() => {
     setTasks(storage.getTasks());
     setFinanceEntries(storage.getFinanceEntries());
-    setEvolutionStories(storage.getEvolutionStories());
     setKanbanContributions(storage.getKanbanContributions());
     setCurrentUser(storage.getCurrentUser());
   }, []);
@@ -45,16 +42,6 @@ const App: React.FC = () => {
   useEffect(() => {
     storage.saveFinanceEntries(financeEntries);
   }, [financeEntries]);
-
-  const handleAddEvolutionStory = (story: Omit<EvolutionStory, 'id' | 'createdAt'>) => {
-    const newStory = storage.addEvolutionStory(story);
-    setEvolutionStories([...evolutionStories, newStory]);
-  };
-
-  const handleDeleteEvolutionStory = (id: string) => {
-    storage.deleteEvolutionStory(id);
-    setEvolutionStories(evolutionStories.filter(s => s.id !== id));
-  };
 
   const handleAddKanbanContribution = (contribution: Omit<KanbanContribution, 'id' | 'createdAt'>) => {
     const newContribution = storage.addKanbanContribution(contribution);
@@ -128,7 +115,6 @@ const App: React.FC = () => {
       case 'resume': return <Resume />;
       case 'projects': return <Projects />;
       case 'portfolio': return <AboutPortfolio />;
-      case 'evolution': return <EvolutionPage stories={evolutionStories} onAddStory={handleAddEvolutionStory} onDeleteStory={handleDeleteEvolutionStory} />;
       case 'process': return <Process tasks={tasks} currentUserId={currentUser?.id} contributions={kanbanContributions} onAddContribution={handleAddKanbanContribution} onDeleteContribution={handleDeleteKanbanContribution} />;
       case 'auth': return <AuthPage onAuthSuccess={handleAuthSuccess} />;
       case 'finance':

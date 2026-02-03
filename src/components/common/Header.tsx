@@ -18,7 +18,6 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
     { id: 'resume', label: 'CURRÍCULO' },
     { id: 'projects', label: '💼 PROJETOS' },
     { id: 'portfolio', label: '💻 PORTFÓLIO' },
-    { id: 'evolution', label: '🚀 EVOLUÇÃO' },
   ];
 
   const handleMenuClick = (pageId: string) => {

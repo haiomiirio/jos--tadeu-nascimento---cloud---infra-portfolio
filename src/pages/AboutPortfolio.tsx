@@ -7,7 +7,7 @@ const AboutPortfolio: React.FC = () => {
         <h2 className="text-2xl sm:text-4xl font-black uppercase">SOBRE O PORTFÓLIO</h2>
       </div>
 
-      {/* Como foi feito */}
+      {/* Como foi construído */}
       <div className="mb-12">
         <div className="bg-white border-4 border-black p-8 shadow-brutalLarge mb-8">
           <h3 className="text-2xl font-black mb-6 uppercase flex items-center gap-3">
@@ -114,51 +114,16 @@ const AboutPortfolio: React.FC = () => {
         </div>
 
         {/* Design */}
-        <div className="bg-brutal-pink border-4 border-black p-8 shadow-brutal mb-8">
+        <div className="bg-brutal-pink border-4 border-black p-8 shadow-brutal">
           <h3 className="text-2xl font-black mb-6 uppercase flex items-center gap-3">
             <span className="text-3xl">🎨</span> Design & UI/UX
           </h3>
-          <p className="text-lg leading-tight mb-4 font-bold">
+          <p className="text-lg leading-tight font-bold">
             O design deste portfólio é baseado em um <span className="bg-white px-2 border-2 border-black">template público do Figma</span> com 
             estilo <span className="bg-brutal-yellow px-2">"Brutal Design"</span> — caracterizado por bordas grossas, 
-            cores vibrantes e tipografia pesada.
-          </p>
-          <p className="text-base leading-snug">
-            Adaptei o template para React/TypeScript, implementando componentes reutilizáveis e responsivos. 
-            Todos os elementos foram codificados do zero, não utilizei bibliotecas de UI prontas.
+            cores vibrantes e tipografia pesada, atualizando conforme o projeto.
           </p>
         </div>
-
-        {/* Pipeline de Deploy */}
-        <div className="bg-brutal-purple border-4 border-black p-8 shadow-brutal text-white">
-          <h3 className="text-2xl font-black mb-6 uppercase flex items-center gap-3">
-            <span className="text-3xl">🔄</span> Pipeline de Deploy Automatizado
-          </h3>
-          <div className="space-y-4">
-            <div className="bg-white/10 border-2 border-white/20 p-4 rounded">
-              <p className="font-black mb-2">1. COMMIT → GitHub</p>
-              <p className="text-sm">Push para branch main dispara workflow automático</p>
-            </div>
-            <div className="bg-white/10 border-2 border-white/20 p-4 rounded">
-              <p className="font-black mb-2">2. BUILD → Vite</p>
-              <p className="text-sm">Otimização, minificação e geração de assets</p>
-            </div>
-            <div className="bg-white/10 border-2 border-white/20 p-4 rounded">
-              <p className="font-black mb-2">3. DEPLOY → GitHub Pages</p>
-              <p className="text-sm">Site atualizado automaticamente em produção</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Conclusão */}
-      <div className="bg-brutal-red border-4 border-black p-8 shadow-brutalLarge text-white text-center">
-        <h3 className="text-3xl font-black mb-4 uppercase">🎯 O QUE ISSO PROVA?</h3>
-        <p className="text-lg font-bold max-w-3xl mx-auto leading-tight">
-          Este portfólio não é apenas um currículo online — é um <span className="bg-white text-black px-2">projeto de software completo</span>. 
-          Demonstra que sei trabalhar com ferramentas modernas, implementar CI/CD, integrar APIs externas e entregar código limpo e funcional. 
-          <span className="block mt-4 text-xl">Estou pronto para contribuir desde o primeiro dia! 🚀</span>
-        </p>
       </div>
     </section>
   );
