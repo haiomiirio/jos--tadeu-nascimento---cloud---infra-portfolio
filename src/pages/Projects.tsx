@@ -124,24 +124,6 @@ const Projects: React.FC = () => {
           </div>
         ))}
       </div>
-
-      {/* Coming Soon Section */}
-      <div className="mt-16 bg-brutal-yellow border-4 border-black p-8 shadow-brutalLarge">
-        <h3 className="text-2xl sm:text-3xl font-black uppercase mb-4">
-          🚧 Próximos Projetos
-        </h3>
-        <div className="space-y-3 text-base sm:text-lg font-medium">
-          <p>
-            <strong className="font-black">→</strong> Lab AWS: Infraestrutura Multi-tier com Terraform
-          </p>
-          <p>
-            <strong className="font-black">→</strong> Sistema de Monitoramento com Grafana & Prometheus
-          </p>
-          <p>
-            <strong className="font-black">→</strong> Automação de Backup em Linux com Python
-          </p>
-        </div>
-      </div>
     </section>
   );
 };
