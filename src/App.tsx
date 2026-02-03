@@ -7,6 +7,7 @@ import Footer from './components/common/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Resume from './pages/Resume';
+import Projects from './pages/Projects';
 import Process from './pages/Process';
 import AuthPage from './pages/AuthPage';
 import RestrictedArea from './pages/RestrictedArea';
@@ -125,6 +126,7 @@ const App: React.FC = () => {
       case 'home': return <Home />;
       case 'about': return <About />;
       case 'resume': return <Resume />;
+      case 'projects': return <Projects />;
       case 'portfolio': return <AboutPortfolio />;
       case 'evolution': return <EvolutionPage stories={evolutionStories} onAddStory={handleAddEvolutionStory} onDeleteStory={handleDeleteEvolutionStory} />;
       case 'process': return <Process tasks={tasks} currentUserId={currentUser?.id} contributions={kanbanContributions} onAddContribution={handleAddKanbanContribution} onDeleteContribution={handleDeleteKanbanContribution} />;

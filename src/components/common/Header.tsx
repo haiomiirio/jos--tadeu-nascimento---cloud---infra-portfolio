@@ -16,9 +16,9 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
     { id: 'home', label: 'INÍCIO' },
     { id: 'about', label: 'SOBRE' },
     { id: 'resume', label: 'CURRÍCULO' },
+    { id: 'projects', label: '💼 PROJETOS' },
     { id: 'portfolio', label: '💻 PORTFÓLIO' },
     { id: 'evolution', label: '🚀 EVOLUÇÃO' },
-    { id: 'process', label: 'PROCESSO' },
   ];
 
   const handleMenuClick = (pageId: string) => {
@@ -53,19 +53,6 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
                 {item.label}
               </button>
             ))}
-
-            {adminEnabled && isAdmin && (
-              <button
-                onClick={() => setActivePage('kanban')}
-                className={`px-3 py-2 rounded border-2 transition ${
-                  activePage === 'kanban'
-                    ? 'bg-white text-black border-white'
-                    : 'border-white hover:bg-white hover:text-black'
-                }`}
-              >
-                KANBAN
-              </button>
-            )}
           </nav>
 
           {/* Right Side: Admin/Logout + Mobile Menu Button */}
@@ -128,28 +115,16 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
                 </button>
               ))}
 
-              {adminEnabled && isAdmin && (
-                <button
-                  onClick={() => handleMenuClick('kanban')}
-                  className={`w-full text-left px-4 py-3 rounded border-2 transition ${
-                    activePage === 'kanban'
-                      ? 'bg-white text-black border-white'
-                      : 'border-white hover:bg-white hover:text-black'
-                  }`}
-                >
-                  KANBAN
-                </button>
-              )}
-
               {/* Mobile Admin/Logout */}
-              {adminEnabled && !isAdmin ? (
+              {adminEnabled && !isAdmin && (
                 <button
                   onClick={() => handleMenuClick('admin')}
                   className="w-full bg-red-600 text-white px-4 py-3 rounded border-2 border-white font-bold hover:bg-red-700 transition"
                 >
                   ADMIN
                 </button>
-              ) : adminEnabled && isAdmin ? (
+              )}
+              {adminEnabled && isAdmin && (
                 <div className="space-y-2">
                   {currentUser?.name && (
                     <div className="text-center text-sm py-2">{currentUser.name}</div>
@@ -161,7 +136,7 @@ export default function Header({ activePage, setActivePage, isAdmin, adminEnable
                     SAIR
                   </button>
                 </div>
-              ) : null}
+              )}
             </nav>
           </div>
         )}
