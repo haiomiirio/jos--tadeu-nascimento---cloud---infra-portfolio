@@ -63,6 +63,35 @@ O portfólio está organizado em páginas para facilitar a navegação e manuten
 - Persistência simples de dados no navegador
 - Layout responsivo
 - Deploy automatizado
+- **Chat AI** com Google Gemini (gratuito)
+
+---
+
+## 🤖 Configurar o Chat AI
+
+O portfólio inclui um chat inteligente com IA do Google Gemini (100% gratuito).
+
+### Como obter sua API Key gratuita:
+
+1. Acesse: **https://aistudio.google.com/app/apikey**
+2. Faça login com sua conta Google
+3. Clique em **"Create API Key"**
+4. Copie a chave gerada
+
+### Configurar no projeto:
+
+```bash
+# Copie o arquivo de exemplo
+cp .env.example .env.local
+
+# Edite .env.local e adicione sua chave:
+VITE_GEMINI_API_KEY=sua_chave_aqui
+```
+
+**Limites do tier gratuito:**
+- 15 requisições por minuto
+- Suficiente para portfolios e projetos pessoais
+- Sem cobrança de cartão de crédito
 
 ---
 
@@ -78,6 +107,12 @@ O portfólio está organizado em páginas para facilitar a navegação e manuten
 git clone https://github.com/haiomiirio/jos--tadeu-nascimento---cloud---infra-portfolio.git
 cd jos--tadeu-nascimento---cloud---infra-portfolio
 npm install
+
+# Configurar API Key do Google Gemini (para o chat funcionar)
+cp .env.example .env.local
+# Edite .env.local e adicione sua chave gratuita de: https://aistudio.google.com/app/apikey
+
+npm run dev
 npm run dev
 ```
 
