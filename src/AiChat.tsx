@@ -34,24 +34,29 @@ const AiChat: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: [
-          ...messages.map(m => ({
-            role: m.role === 'user' ? 'user' : 'model',
-            parts: [{ text: m.content }]
-          })),
-          { role: 'user', parts: [{ text: input.toUpperCase() }] }
-        ],
-        config: {
-          systemInstruction: SYSTEM_PROMPT.toUpperCase(),
+      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      if (!apiKey) {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'ERRO: API KEY NÃO CONFIGURADA. VEJA O README PARA INSTRUÇÕES.' }]);
+        setIsLoading(false);
+        return;
+      }
+      
+      const ai = new GoogleGenAI({ apiKey });
+      const model = ai.getGenerativeModel({ model: 'gemini-1.5-flash' });
+      
+      const chat = model.startChat({
+        history: messages.map(m => ({
+          role: m.role === 'user' ? 'user' : 'model',
+          parts: [{ text: m.content }]
+        })),
+        generationConfig: {
           maxOutputTokens: 500,
           temperature: 0.7,
         },
       });
 
-      const aiText = (response.text || 'OPA, TIVE UM ERRO TÉCNICO. PERGUNTE DE NOVO!').toUpperCase();
+      const result = await chat.sendMessage(input.toUpperCase());
+      const aiText = (result.response.text() || 'OPA, TIVE UM ERRO TÉCNICO. PERGUNTE DE NOVO!').toUpperCase();
       setMessages(prev => [...prev, { role: 'assistant', content: aiText }]);
     } catch (error) {
       setMessages(prev => [...prev, { role: 'assistant', content: 'ERRO DE CONEXÃO. TENTE EM ALGUNS INSTANTES.' }]);
