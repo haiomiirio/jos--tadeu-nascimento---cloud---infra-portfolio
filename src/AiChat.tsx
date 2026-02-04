@@ -44,22 +44,14 @@ const AiChat: React.FC = () => {
       const ai = new GoogleGenAI({ apiKey });
       const model = ai.getGenerativeModel({ model: 'gemini-1.5-flash' });
       
-      const chat = model.startChat({
-        history: messages.map(m => ({
-          role: m.role === 'user' ? 'user' : 'model',
-          parts: [{ text: m.content }]
-        })),
-        generationConfig: {
-          maxOutputTokens: 500,
-          temperature: 0.7,
-        },
-      });
-
-      const result = await chat.sendMessage(input.toUpperCase());
-      const aiText = (result.response.text() || 'OPA, TIVE UM ERRO TÉCNICO. PERGUNTE DE NOVO!').toUpperCase();
+      const result = await model.generateContent(input.toUpperCase());
+      const response = await result.response;
+      const aiText = (response.text() || 'OPA, TIVE UM ERRO TÉCNICO. PERGUNTE DE NOVO!').toUpperCase();
       setMessages(prev => [...prev, { role: 'assistant', content: aiText }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'ERRO DE CONEXÃO. TENTE EM ALGUNS INSTANTES.' }]);
+      console.error('Erro na API:', error);
+      const errorMsg = error instanceof Error ? error.message : 'ERRO DE CONEXÃO';
+      setMessages(prev => [...prev, { role: 'assistant', content: `ERRO: ${errorMsg.toUpperCase()}` }]);
     } finally {
       setIsLoading(false);
     }
