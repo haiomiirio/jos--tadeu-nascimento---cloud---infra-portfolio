@@ -65,8 +65,9 @@ const AiChat: React.FC = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-10 right-10 z-[100] w-16 h-16 bg-brutal-yellow border-4 border-black flex items-center justify-center shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+        aria-label={isOpen ? "Fechar chat de suporte" : "Abrir chat de suporte"}
       >
-        <svg className="h-10 w-10 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="h-10 w-10 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
       </button>
@@ -79,8 +80,8 @@ const AiChat: React.FC = () => {
               <h3 className="text-lg font-black uppercase tracking-tighter leading-none">SUPORTE BOT</h3>
               <p className="text-[10px] bg-black text-white px-2 py-0.5 mt-1 inline-block font-black uppercase tracking-widest">IA ATIVA</p>
             </div>
-            <button onClick={() => setIsOpen(false)} className="ml-auto border-2 border-black bg-white p-1 hover:bg-brutal-red transition-all">
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
+            <button onClick={() => setIsOpen(false)} className="ml-auto border-2 border-black bg-white p-1 hover:bg-brutal-red transition-all" aria-label="Fechar chat">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-brutal-bg">
@@ -109,8 +110,8 @@ const AiChat: React.FC = () => {
               placeholder="Sua pergunta aqui..."
               className="flex-1 bg-brutal-bg border-4 border-black px-4 py-3 text-xs font-black focus:outline-none focus:bg-brutal-blueLight"
             />
-            <button type="submit" disabled={isLoading} className="bg-brutal-yellow border-4 border-black p-3 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>
+            <button type="submit" disabled={isLoading} className="bg-brutal-yellow border-4 border-black p-3 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all" aria-label="Enviar mensagem">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>
             </button>
           </form>
         </div>
