@@ -121,6 +121,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({ task, isAdmin, currentUserId, o
             className={`text-[10px] px-2 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all opacity-75 hover:opacity-100 ${
               task.isPublic ? 'bg-blue-300 text-blue-900' : 'bg-gray-300 text-gray-900'
             }`}
+            aria-label={task.isPublic ? "Marcar como privado" : "Marcar como público"}
           >
             {task.isPublic ? '🔓' : '🔒'}
           </button>
@@ -166,6 +167,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({ task, isAdmin, currentUserId, o
               disabled={task.status === 'todo'} 
               className="p-1 flex items-center justify-center hover:bg-black/10 rounded disabled:opacity-0 transition-colors text-gray-600"
               title="Mover para trás"
+              aria-label="Mover tarefa para trás"
             >
               ◀
             </button>
@@ -174,6 +176,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({ task, isAdmin, currentUserId, o
               disabled={task.status === 'done'} 
               className="p-1 flex items-center justify-center hover:bg-black/10 rounded disabled:opacity-0 transition-colors text-gray-600"
               title="Mover para frente"
+              aria-label="Mover tarefa para frente"
             >
               ▶
             </button>
@@ -184,6 +187,7 @@ const KanbanCard: React.FC<KanbanCardProps> = ({ task, isAdmin, currentUserId, o
               onClick={() => onDeleteTask?.(task.id)} 
               className="p-1 flex items-center justify-center hover:bg-red-300 text-gray-600 hover:text-red-700 rounded transition-colors font-bold"
               title="Deletar tarefa"
+              aria-label="Excluir tarefa"
             >
               ✕
             </button>

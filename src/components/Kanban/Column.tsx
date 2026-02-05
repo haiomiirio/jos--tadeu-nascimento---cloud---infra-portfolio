@@ -84,6 +84,7 @@ const Column: React.FC<ColumnProps> = ({
         <button
           onClick={() => setIsMinimized(!isMinimized)}
           className="p-1.5 hover:bg-gray-300 rounded transition-colors"
+          aria-label={isMinimized ? "Expandir coluna" : "Minimizar coluna"}
         >
           {isMinimized ? '▼' : '▲'}
         </button>

@@ -345,6 +345,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                   <button
                     onClick={() => handleDeleteColumn(col.id)}
                     className="mb-2 bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600"
+                    aria-label={`Excluir coluna ${col.title}`}
                   >
                     ✕
                   </button>
@@ -391,6 +392,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
             <button
               onClick={() => dispatch(setMenuMinimized(!menuMinimized))}
               className="p-1 hover:bg-gray-200 rounded"
+              aria-label={menuMinimized ? "Expandir menu" : "Minimizar menu"}
             >
               {menuMinimized ? '▼' : '▲'}
             </button>
@@ -428,6 +430,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                         onClick={() => handleAddTask(selectedColumn || undefined)}
                         className="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600"
                         onMouseDown={(e) => e.stopPropagation()}
+                        aria-label="Adicionar nova tarefa"
                       >
                         ✓
                       </button>
@@ -451,6 +454,7 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                         onClick={handleAddColumn}
                         className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
                         onMouseDown={(e) => e.stopPropagation()}
+                        aria-label="Adicionar nova coluna"
                       >
                         +
                       </button>
