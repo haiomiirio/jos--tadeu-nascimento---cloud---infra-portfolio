@@ -13,6 +13,10 @@ const Home: React.FC = () => {
           <span className="text-4xl font-black text-black">JT</span>
         </div>
         
+        <h2 className="inline-block bg-brutal-yellow border-2 border-black px-4 py-1 font-bold text-xs mb-6 uppercase tracking-widest">
+          {PERSONAL_DATA.role}
+        </h2>
+        
         <h1 className="text-5xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9] uppercase">
           {PERSONAL_DATA.name.split(' ').map((word, i) => (
             <span key={i} className={`inline-block mr-4 ${i % 2 !== 0 ? 'text-brutal-red italic' : 'text-black'}`}>
@@ -20,10 +24,6 @@ const Home: React.FC = () => {
             </span>
           ))}
         </h1>
-        
-        <p className="inline-block bg-brutal-yellow border-2 border-black px-4 py-1 font-bold text-xs mb-6 uppercase tracking-widest">
-          {PERSONAL_DATA.role}
-        </p>
         
         <p className="text-lg md:text-xl text-black max-w-2xl mx-auto mb-12 leading-tight font-medium bg-brutal-blueLight/30 p-4 border-2 border-black shadow-brutal">
           {PERSONAL_DATA.bio}
