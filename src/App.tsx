@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import Header from './components/common/Header';
@@ -7,17 +7,19 @@ import Footer from './components/common/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Resume from './pages/Resume';
-import Projects from './pages/Projects';
-import Process from './pages/Process';
-import AuthPage from './pages/AuthPage';
-import RestrictedArea from './pages/RestrictedArea';
-import FinancePage from './pages/FinancePage';
-import AboutPortfolio from './pages/AboutPortfolio';
-import AdminPanel from './components/Admin/AdminPanel';
-import AdminLogin from './components/Auth/AdminLogin';
 import AiChat from './AiChat';
 import { KanbanTask, User, FinanceEntry, KanbanContribution } from './types';
 import { storage } from './services/storage';
+
+// Lazy load das páginas não essenciais
+const Projects = lazy(() => import('./pages/Projects'));
+const Process = lazy(() => import('./pages/Process'));
+const AuthPage = lazy(() => import('./pages/AuthPage'));
+const RestrictedArea = lazy(() => import('./pages/RestrictedArea'));
+const FinancePage = lazy(() => import('./pages/FinancePage'));
+const AboutPortfolio = lazy(() => import('./pages/AboutPortfolio'));
+const AdminPanel = lazy(() => import('./components/Admin/AdminPanel'));
+const AdminLogin = lazy(() => import('./components/Auth/AdminLogin'));
 
 const App: React.FC = () => {
   const adminEnabled = import.meta.env.VITE_ADMIN_ENABLED === 'true';
@@ -205,7 +207,15 @@ const App: React.FC = () => {
       />
       <main className="flex-1 relative z-10 w-full">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {renderPage()}
+          <Suspense fallback={
+            <div className="flex items-center justify-center min-h-[60vh]">
+              <div className="bg-white border-4 border-black px-8 py-6 shadow-brutal animate-pulse">
+                <p className="text-xs font-black uppercase tracking-widest">CARREGANDO...</p>
+              </div>
+            </div>
+          }>
+            {renderPage()}
+          </Suspense>
         </div>
       </main>
       <Footer />

@@ -9,6 +9,16 @@ export default defineConfig({
   build: {
     outDir: '../dist',
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-redux'],
+          'vendor-ui': ['@hello-pangea/dnd'],
+          'google-ai': ['@google/genai'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
   },
   server: {
     port: 3000,
