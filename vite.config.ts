@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   root: path.resolve(__dirname, 'src'),
   base: '/jos--tadeu-nascimento---cloud---infra-portfolio/',
+  publicDir: path.resolve(__dirname, 'public'),
   build: {
     outDir: '../dist',
     emptyOutDir: true,
